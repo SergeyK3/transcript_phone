@@ -23,4 +23,6 @@ transcripts/
 # Python packaging
 *.egg-info/
 dist/
-build/
+build/token.json
+token.json
+transcript_phone-sa.json
