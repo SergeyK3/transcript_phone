@@ -1,0 +1,18 @@
+проект Telegram->Whisper транскрибации для экзаменов
+
+Коротко:
+- Стек: Python + FastAPI, Telegram webhook, OpenAI Whisper API для транскрибации.
+- Сервер: CPU-only. Аудио и результаты хранятся локально (папки uploads/, transcripts/).
+- Функциональность: приём аудиосообщений через Telegram, скачивание файлов, отправка в OpenAI Whisper API, сохранение транскриптов, отправка текста назад в чат, сохранение в БД.
+- Дополнительные требования: перевод KZ→RU (опционально), сравнение ответа студента с эталоном (семантическая оценка), поддержка дисциплин и билетов (вопросов), импорт данных из Google Sheets (n8n workflow использует Voprosi и Otveti).
+
+Ключевые решения:
+- Использовать OpenAI Whisper API для качества и простоты (нет необходимости в GPU).
+- Фоновые задачи в FastAPI (BackgroundTasks) для непрерывного ответа Telegram.
+- БД на SQLAlchemy (SQLite/Postgres), сущности: Discipline, Question, ChatSetting, Submission.
+- Оценка: эмбеддинги (OpenAI) + проверка ключевых элементов + n-gram метрика → итоговый скор.
+
+Текущий артефакт:
+- Минимальный рабочий пример FastAPI (main.py), requirements.txt, .env.example, README.
+- Импортёр из Google Sheets (import_from_google_sheets.py) для миграции данных из n8n/Sheets в локальную БД.
+- Предложены ORM-модели, админ-роутер, telegram handlers и scoring example.

@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+venv/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+
+# Uploads / transcripts
+uploads/
+transcripts/
+
+# Google creds
+*.json
+
+# Python packaging
+*.egg-info/
+dist/
+build/
